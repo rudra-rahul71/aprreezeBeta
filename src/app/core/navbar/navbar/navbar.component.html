@@ -1,0 +1,71 @@
+<mat-sidenav-container *ngIf="auth.isAuthenticated$ | async" class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport mode="over">
+    <mat-toolbar>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <div>
+        <a mat-list-item (click)="drawer.toggle()" routerLink="/dashboard" routerLinkActive="selected">
+          Dashboard
+        </a>
+        <a mat-list-item (click)="drawer.toggle()" routerLink="/calendar" routerLinkActive="selected">
+          Calendar
+        </a>
+        <a mat-list-item (click)="drawer.toggle()" routerLink="/request" routerLinkActive="selected">
+          Request
+        </a>
+        <a mat-list-item (click)="drawer.toggle()" routerLink="/wallet" routerLinkActive="selected">
+          Wallet
+        </a>
+      </div>
+      <div class="nav-footer">
+        <a mat-list-item (click)="drawer.toggle()" routerLink="/logout" routerLinkActive="selected">
+          Logout
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span>Appreeze</span>
+      
+      <span class="spacer"></span>
+  
+      <button
+        type="button"
+        mat-icon-button
+        routerLink="/account">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  
+<div *ngIf="(auth.isAuthenticated$ | async) === false">
+  <mat-toolbar color="primary">
+    <span>Appreeze</span>
+  
+    <span class="spacer"></span>
+  
+    <button mat-button (click)="loginWithRedirect()">
+        Log in
+    </button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>
