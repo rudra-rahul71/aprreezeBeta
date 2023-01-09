@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -9,7 +10,8 @@ import { HomeComponent } from './home/home.component';
     HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCheckboxModule
   ]
 })
 export class HomeModule { }

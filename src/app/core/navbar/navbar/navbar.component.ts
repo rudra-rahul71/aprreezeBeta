@@ -1,17 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnDestroy {
+  destroyed = new Subject<void>();
+  currentScreenSize!: String;
+  logoPath = 'assets/logo.png';
 
-  constructor(public auth: AuthService, private router: Router) { }
+  displayNameMap = new Map([
+    //phone
+    [Breakpoints.XSmall, 'XSmall'],
+    //ipad
+    [Breakpoints.Small, 'Small'],
+    //desktop
+    [Breakpoints.Medium, 'Medium']
+  ]);
 
-  ngOnInit(): void {
+  constructor(public auth: AuthService, private router: Router, breakpointObserver: BreakpointObserver) {
+    breakpointObserver
+      .observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium
+      ])
+      .pipe(takeUntil(this.destroyed))
+      .subscribe(result => {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+          }
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
   }
 
   loginWithRedirect(): void {
@@ -19,4 +50,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  isPhone() {
+    return this.currentScreenSize === 'XSmall'
+  }
 }

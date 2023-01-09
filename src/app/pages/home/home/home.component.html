@@ -1,1 +1,36 @@
-<h1>Conduct Appraisals and BPO's without leaving your home</h1>
+<div class="container">
+  <h1>Conduct Appraisals and BPO's without leaving your home {{currentScreenSize}}</h1>
+  <div class="home" *ngIf="!isTablet()">
+    <div class="half left">
+      <div *ngFor="let check of checks">
+        <div class="check-padding">
+          <mat-checkbox color="primary" [checked]=true (click)="$event.preventDefault()" [disableRipple]="true">
+            {{check}}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="half">
+      <div class="img-container">
+        <img [src]="logoPath" />
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isTablet()">
+    <div class="left">
+      <div *ngFor="let check of checks">
+        <div class="check-padding">
+          <mat-checkbox color="primary" [checked]=true (click)="$event.preventDefault()" [disableRipple]="true">
+            {{check}}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="img-containe">
+        <img [src]="logoPath" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -9,7 +10,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCheckboxModule
   ]
 })
 export class DashboardModule { }

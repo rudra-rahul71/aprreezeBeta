@@ -1,61 +1,50 @@
-<mat-sidenav-container *ngIf="auth.isAuthenticated$ | async" class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport mode="over">
-    <mat-toolbar>
-      <button
-        type="button"
-        mat-icon-button
-        (click)="drawer.toggle()">
-        <mat-icon>chevron_left</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-nav-list>
-      <div>
-        <a mat-list-item (click)="drawer.toggle()" routerLink="/dashboard" routerLinkActive="selected">
-          Dashboard
-        </a>
-        <a mat-list-item (click)="drawer.toggle()" routerLink="/calendar" routerLinkActive="selected">
-          Calendar
-        </a>
-        <a mat-list-item (click)="drawer.toggle()" routerLink="/request" routerLinkActive="selected">
-          Request
-        </a>
-        <a mat-list-item (click)="drawer.toggle()" routerLink="/wallet" routerLinkActive="selected">
-          Wallet
-        </a>
-      </div>
-      <div class="nav-footer">
-        <a mat-list-item (click)="drawer.toggle()" routerLink="/logout" routerLinkActive="selected">
-          Logout
-        </a>
-      </div>
-    </mat-nav-list>
-  </mat-sidenav>
+<div class="container" *ngIf="auth.isAuthenticated$ | async">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()" *ngIf="isPhone() ? true : false"><mat-icon>menu</mat-icon></button>
+    <div class="img-container">
+      <img [src]="logoPath" />
+    </div>
+    <h1 class="app-name">Appreeze</h1>
+
+    <span class="spacer"></span>
   
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        mat-icon-button
-        (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
+    <button
+      type="button"
+      mat-icon-button
+      routerLink="/account">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
 
-      <span>Appreeze</span>
-      
-      <span class="spacer"></span>
-  
-      <button
-        type="button"
-        mat-icon-button
-        routerLink="/account">
-        <mat-icon>account_circle</mat-icon>
-      </button>
-    </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav" #drawer [mode]="isPhone() ? 'over' : 'side'" [opened]="isPhone() ? false : true">
+      <mat-nav-list>
+        <div>
+          <!--(click)="drawer.toggle()"  -->
+          <a mat-list-item routerLink="/dashboard" routerLinkActive="selected">
+            <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>Dashboard
+          </a>
+          <a mat-list-item routerLink="/calendar" routerLinkActive="selected">
+            <mat-icon aria-hidden="false" aria-label="home icon">perm_contact_calendar</mat-icon>Calendar
+          </a>
+          <a mat-list-item routerLink="/request" routerLinkActive="selected">
+            <mat-icon aria-hidden="false" aria-label="home icon">find_in_page</mat-icon>Request
+          </a>
+          <a mat-list-item routerLink="/wallet" routerLinkActive="selected">
+            <mat-icon aria-hidden="false" aria-label="home icon">account_balance</mat-icon>Wallet
+          </a>
+          <a mat-list-item routerLink="/logout" routerLinkActive="selected">
+            <mat-icon aria-hidden="false" aria-label="home icon">exit_to_app</mat-icon>Logout
+          </a>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
 
-    <router-outlet></router-outlet>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div> 
   
 <div *ngIf="(auth.isAuthenticated$ | async) === false">
   <mat-toolbar color="primary">

@@ -1,0 +1,50 @@
+// .app-home{
+  .container {
+    background-color: plum;
+    padding: 20px;
+  }
+  
+  .home {
+    display: flex;
+  }
+  
+  .half {
+    width: 50%;
+  }
+  
+  .left {
+    padding-left: 20px;
+  }
+  
+  .check-padding {
+    padding-bottom: 10px;
+  }
+  
+  .mat-checkbox {
+    cursor: default;
+  }
+  
+  .img-container {
+    width: 100%;
+    max-width: 500px;
+    padding-right: 10px;
+  }
+  
+  .img-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .img-containe {
+    width: 100%;
+    // max-width: 500px;
+    padding-right: 10px;
+  }
+  
+  .img-containe img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+// }

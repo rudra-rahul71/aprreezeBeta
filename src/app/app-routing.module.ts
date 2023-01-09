@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { LogoutComponent } from './core/logout/logout/logout.component';
+import { AccountPageComponent } from './pages/account-page/account-page/account-page.component';
 import { CalendarPageComponent } from './pages/calendar-page/calendar-page/calendar-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home/home.component';
@@ -27,6 +28,11 @@ const routes: Routes = [
   { 
     path: 'wallet', 
     component: WalletPageComponent,
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'account', 
+    component: AccountPageComponent,
     canActivate: [AuthGuard]
   },
   { 

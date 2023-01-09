@@ -1,31 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 .sidenav-container {
-    height: 100%;
-  }
+  flex: 1;
+}
+
+.img-container {
+  width: 50px;
+  height: 31px;
+  padding-right: 10px;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+}
+
+.sidenav {
+  width: 200px;
+}
   
-  .sidenav {
-    width: 200px;
-  }
+.spacer {
+  flex: 1 1 auto;
+}
   
-  .sidenav .mat-toolbar {
-    background: inherit;
-  }
+.selected {
+  color: purple;
+}
   
-//   .mat-toolbar.mat-primary {
-//     position: sticky;
-//     top: 0;
-//     z-index: 1;
-//   }
-  
-  .spacer {
-    flex: 1 1 auto;
-  }
-  
-  .selected {
-    color: forestgreen;
-  }
-  
-  .nav-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
+.nav-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
