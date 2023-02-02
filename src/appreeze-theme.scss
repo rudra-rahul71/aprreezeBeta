@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$appreeze-theme-primary:  mat-palette($mat-deep-purple, 300);
+$appreeze-theme-accent:   mat-palette($mat-blue);
+$appreeze-theme-warn:     mat-palette($mat-red);
+
+$appreeze-theme: mat-light-theme($appreeze-theme-primary, $appreeze-theme-accent, $appreeze-theme-warn);
+
+@include angular-material-theme($appreeze-theme);

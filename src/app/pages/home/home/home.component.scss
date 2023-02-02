@@ -1,6 +1,5 @@
 // .app-home{
   .container {
-    background-color: plum;
     padding: 20px;
   }
   
@@ -46,5 +45,14 @@
     width: 100%;
     height: auto;
     border-radius: 20px;
+  }
+
+  @media(max-width: 959.98px) {
+    .home {
+      display: block;
+    }
+    .half{
+      width: 100%;
+    }
   }
 // }

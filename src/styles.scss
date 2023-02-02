@@ -8,6 +8,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 30px!important;
 }
 
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+
 .mat-checkbox-layout {
   white-space: inherit !important;
 }

@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Subject, takeUntil } from 'rxjs';
@@ -9,10 +9,11 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnDestroy {
+export class NavbarComponent implements OnInit, OnDestroy {
   destroyed = new Subject<void>();
   currentScreenSize!: String;
   logoPath = 'assets/logo.png';
+  profileJson!: string;
 
   displayNameMap = new Map([
     //phone
@@ -34,10 +35,17 @@ export class NavbarComponent implements OnDestroy {
       .subscribe(result => {
         for (const query of Object.keys(result.breakpoints)) {
           if (result.breakpoints[query]) {
+            console.log(result.breakpoints)
             this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
           }
         }
       });
+  }
+  
+  ngOnInit(): void {
+    this.auth.user$.subscribe(
+      (profile) => (this.profileJson = JSON.stringify(profile, null, 2))
+    )
   }
 
   ngOnDestroy() {
@@ -46,6 +54,7 @@ export class NavbarComponent implements OnDestroy {
   }
 
   loginWithRedirect(): void {
+    this.auth.getUser()
     this.auth.loginWithRedirect();
     this.router.navigate(['/dashboard']);
   }

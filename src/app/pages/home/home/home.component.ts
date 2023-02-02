@@ -1,4 +1,4 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+// import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -13,41 +13,8 @@ export class HomeComponent implements OnDestroy {
     'Interior and Exterior Pictures - with recorded video',
     'Easy Scheduling and Payment', 'GPS Verified'];
 
-  destroyed = new Subject<void>();
-  currentScreenSize!: String;
-
-  displayNameMap = new Map([
-    //phone
-    [Breakpoints.XSmall, 'XSmall'],
-    //ipad
-    [Breakpoints.Small, 'Small'],
-    //desktop
-    [Breakpoints.Medium, 'Medium']
-  ]);
-
-  constructor(breakpointObserver: BreakpointObserver) {
-    breakpointObserver
-    .observe([
-      Breakpoints.XSmall,
-      Breakpoints.Small,
-      Breakpoints.Medium
-    ])
-    .pipe(takeUntil(this.destroyed))
-    .subscribe(result => {
-      for (const query of Object.keys(result.breakpoints)) {
-        if (result.breakpoints[query]) {
-          this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
-        }
-      }
-    });
-   }
+  constructor() {}
 
   ngOnDestroy(): void {
-    this.destroyed.next();
-    this.destroyed.complete();
-  }
-
-  isTablet() {
-    return this.currentScreenSize === 'Small' || this.currentScreenSize === 'XSmall';
   }
 }

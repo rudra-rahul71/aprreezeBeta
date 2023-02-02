@@ -8,7 +8,22 @@
   right: 0;
 }
 
+.mat-toolbar {
+  height: 40px;
+}
+
+.mat-list-item {
+  height: 40px !important;
+  margin-bottom: 5px !important;
+}
+
+.mat-list-item:hover,
+.mat-list-item:focus {
+  background-color: #E3F2FD;
+}
+
 .sidenav-container {
+  background-color: #F3E5F5;
   flex: 1;
 }
 
@@ -32,11 +47,18 @@
 }
   
 .selected {
-  color: purple;
+  color: #2196F3;
+  border-style: solid;
+  border-width: 0px 0px 0px 5px;
+  background-color: #E3F2FD;
 }
   
 .nav-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.account {
+  font: 400 14px / 20px Roboto, "Helvetica Neue", sans-serif;
 }
