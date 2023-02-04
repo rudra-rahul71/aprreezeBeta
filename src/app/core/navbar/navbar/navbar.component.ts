@@ -35,7 +35,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       .subscribe(result => {
         for (const query of Object.keys(result.breakpoints)) {
           if (result.breakpoints[query]) {
-            console.log(result.breakpoints)
             this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
           }
         }
