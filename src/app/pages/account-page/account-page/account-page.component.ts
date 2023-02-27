@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-account-page',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPageComponent implements OnInit {
 
-  constructor() { }
+  profile: any;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    let x = this.userService.isUserAssesor() ? 'Assesor' : 'Requestor';
+    this.profile = x + ' ' + this.userService.getUserType();
   }
 
 }

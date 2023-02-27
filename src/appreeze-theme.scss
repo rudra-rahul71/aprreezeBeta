@@ -2,7 +2,41 @@
 
 @include mat-core();
 
-$appreeze-theme-primary:  mat-palette($mat-deep-purple, 300);
+$plump-purple: #3c3acd;
+$off-purple: #f8f6ff;
+$informative-blue: #2196F3;
+$informative-off-blue: #E3F2FD;
+
+$appreeze-purpe-palette: (
+ 50: #f8f6ff,
+ 100: #e3dcfd,
+ 200: #d6cafc,
+ 300: #9e84f9,
+ 400: #7f68ee,
+ 500: #664ee6,
+ 600: #5b49df,
+ 700: #4b40d6,
+ 800: #3c3acd,
+ 900: #1d2dbf,
+ contrast: (
+  50 : #000000,
+  100 : #000000,
+  200 : #000000,
+  300 : #ffffff,
+  400 : #ffffff,
+  500 : #ffffff,
+  600 : #ffffff,
+  700 : #ffffff,
+  800 : #ffffff,
+  900 : #ffffff,
+  A100 : #000000,
+  A200 : #000000,
+  A400 : #000000,
+  A700 : #000000,
+)
+);
+
+$appreeze-theme-primary:  mat-palette($appreeze-purpe-palette, 300);
 $appreeze-theme-accent:   mat-palette($mat-blue);
 $appreeze-theme-warn:     mat-palette($mat-red);
 

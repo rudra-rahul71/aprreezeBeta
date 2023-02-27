@@ -1,3 +1,5 @@
+@import '../../../../appreeze-theme.scss';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -19,11 +21,12 @@
 
 .mat-list-item:hover,
 .mat-list-item:focus {
-  background-color: #E3F2FD;
+  background-color: $informative-off-blue !important;
 }
 
 .sidenav-container {
-  background-color: #F3E5F5;
+  // background-color: #F3E5F5;
+  background-color: $off-purple;
   flex: 1;
 }
 
@@ -47,10 +50,10 @@
 }
   
 .selected {
-  color: #2196F3;
+  color: $informative-blue !important;
   border-style: solid;
   border-width: 0px 0px 0px 5px;
-  background-color: #E3F2FD;
+  background-color: $informative-off-blue;
 }
   
 .nav-footer {

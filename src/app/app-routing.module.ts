@@ -8,32 +8,38 @@ import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.compon
 import { HomeComponent } from './pages/home/home/home.component';
 import { RequestPageComponent } from './pages/request-page/request-page/request-page.component';
 import { WalletPageComponent } from './pages/wallet-page/wallet-page/wallet-page.component';
+import { AuthGaurdService } from './shared/services/auth-gaurd.service';
 
 const routes: Routes = [
   { 
     path: 'dashboard', 
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGaurdService],
+    data: { title: 'Dashboard'}
   },
   { 
     path: 'calendar', 
     component: CalendarPageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGaurdService],
+    data: { title: 'Calendar'}
   },
   { 
     path: 'request', 
     component: RequestPageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGaurdService],
+    data: { title: 'Request'}
   },
   { 
     path: 'wallet', 
     component: WalletPageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGaurdService],
+    data: { title: 'Wallet'}
   },
   { 
     path: 'account', 
     component: AccountPageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGaurdService],
+    data: { title: 'Account'}
   },
   { 
     path: 'home', 

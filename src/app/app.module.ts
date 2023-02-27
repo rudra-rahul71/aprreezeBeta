@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-// import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from 'src/environments/environment';
@@ -13,6 +11,9 @@ import { RequestPageModule } from './pages/request-page/request-page.module';
 import { WalletPageModule } from './pages/wallet-page/wallet-page.module';
 import { LogoutModule } from './core/logout/logout.module';
 import { HomeModule } from './pages/home/home.module';
+import { AuthGaurdService } from './shared/services/auth-gaurd.service';
+import { UserService } from './shared/services/user.service';
+import { UserResolverService } from './shared/services/user-resolver.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,11 @@ import { HomeModule } from './pages/home/home.module';
     LogoutModule,
     HomeModule
   ],
-  providers: [],
+  providers: [
+    AuthGaurdService,
+    UserResolverService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

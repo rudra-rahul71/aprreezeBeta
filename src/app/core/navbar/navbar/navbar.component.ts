@@ -13,7 +13,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   destroyed = new Subject<void>();
   currentScreenSize!: String;
   logoPath = 'assets/logo.png';
-  profileJson!: string;
 
   displayNameMap = new Map([
     //phone
@@ -42,9 +41,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit(): void {
-    this.auth.user$.subscribe(
-      (profile) => (this.profileJson = JSON.stringify(profile, null, 2))
-    )
   }
 
   ngOnDestroy() {
@@ -53,7 +49,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   loginWithRedirect(): void {
-    this.auth.getUser()
     this.auth.loginWithRedirect();
     this.router.navigate(['/dashboard']);
   }
