@@ -21,12 +21,12 @@ export class AuthGaurdService extends AuthGuard implements CanActivate {
     const restrictedRoles = next.data['roles'] as string[];
     return super.canActivate(next, state).pipe(
       mergeMap(() => this.userResolverService.resolve().pipe(
-        map(() => this.isAuthorized(restrictedRoles))
+        map(() => this.isAuthorized(next, restrictedRoles))
       ))
     );
   }
 
-  private isAuthorized(restrictedRoles?: string[]): boolean {
+  private isAuthorized(next: ActivatedRouteSnapshot, restrictedRoles?: string[]): boolean {
     let hasRequiredRole = false;
     this.userService.getUserObservable().subscribe(user => {
       for (const role of Constants.applicationRoles) {
@@ -44,6 +44,12 @@ export class AuthGaurdService extends AuthGuard implements CanActivate {
         });
       }
     });
+
+    if((Constants.requestorPages.indexOf(next.data['title']) !== -1 && !this.userService.isUserRequestor())
+      || (Constants.assesorPages.indexOf(next.data['title']) !== -1 && !this.userService.isUserAssesor())) {
+        hasRequiredRole = false;
+    }
+    
     if(!hasRequiredRole) {
       this.router.navigate(['logout']);
     }

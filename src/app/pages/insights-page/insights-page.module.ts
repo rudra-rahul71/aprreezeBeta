@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RequestPageComponent } from './request-page/request-page.component';
+import { InsightsPageComponent } from './insights-page/insights-page.component';
 
 
 
 @NgModule({
   declarations: [
-    RequestPageComponent
+    InsightsPageComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class RequestPageModule { }
+export class InsightsPageModule { }

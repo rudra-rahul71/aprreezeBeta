@@ -7,13 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarModule } from './core/navbar/navbar.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { CalendarPageModule } from './pages/calendar-page/calendar-page.module';
-import { RequestPageModule } from './pages/request-page/request-page.module';
 import { WalletPageModule } from './pages/wallet-page/wallet-page.module';
 import { LogoutModule } from './core/logout/logout.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthGaurdService } from './shared/services/auth-gaurd.service';
 import { UserService } from './shared/services/user.service';
 import { UserResolverService } from './shared/services/user-resolver.service';
+import { ReportsPageModule } from './pages/reports-page/reports-page.module';
+import { InsightsPageModule } from './pages/insights-page/insights-page.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserResolverService } from './shared/services/user-resolver.service';
     NavbarModule,
     DashboardModule,
     CalendarPageModule,
-    RequestPageModule,
+    ReportsPageModule,
+    InsightsPageModule,
     WalletPageModule,
     LogoutModule,
     HomeModule

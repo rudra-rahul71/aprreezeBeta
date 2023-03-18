@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@auth0/auth0-angular';
 import { LogoutComponent } from './core/logout/logout/logout.component';
 import { AccountPageComponent } from './pages/account-page/account-page/account-page.component';
 import { CalendarPageComponent } from './pages/calendar-page/calendar-page/calendar-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home/home.component';
-import { RequestPageComponent } from './pages/request-page/request-page/request-page.component';
+import { InsightsPageComponent } from './pages/insights-page/insights-page/insights-page.component';
+import { ReportsPageComponent } from './pages/reports-page/reports-page/reports-page.component';
 import { WalletPageComponent } from './pages/wallet-page/wallet-page/wallet-page.component';
 import { AuthGaurdService } from './shared/services/auth-gaurd.service';
 
@@ -24,10 +24,16 @@ const routes: Routes = [
     data: { title: 'Calendar'}
   },
   { 
-    path: 'request', 
-    component: RequestPageComponent,
+    path: 'reports', 
+    component: ReportsPageComponent,
     canActivate: [AuthGaurdService],
-    data: { title: 'Request'}
+    data: { title: 'Reports'}
+  },
+  { 
+    path: 'insights', 
+    component: InsightsPageComponent,
+    canActivate: [AuthGaurdService],
+    data: { title: 'Insights'}
   },
   { 
     path: 'wallet', 
