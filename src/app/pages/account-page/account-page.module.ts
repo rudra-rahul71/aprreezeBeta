@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountPageComponent } from './account-page/account-page.component';
+import { AccountService } from './account.service';
 
 
 
@@ -10,6 +11,12 @@ import { AccountPageComponent } from './account-page/account-page.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AccountPageComponent
+  ],
+  providers: [
+    AccountService
   ]
 })
 export class AccountPageModule { }

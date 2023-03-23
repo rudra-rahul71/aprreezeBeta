@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarModule } from './core/navbar/navbar.module';
@@ -15,6 +15,7 @@ import { UserService } from './shared/services/user.service';
 import { UserResolverService } from './shared/services/user-resolver.service';
 import { ReportsPageModule } from './pages/reports-page/reports-page.module';
 import { InsightsPageModule } from './pages/insights-page/insights-page.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InsightsPageModule } from './pages/insights-page/insights-page.module';
       ...env.auth,
     }),
     BrowserAnimationsModule,
+    HttpClientModule,
     NavbarModule,
     DashboardModule,
     CalendarPageModule,
@@ -36,6 +38,11 @@ import { InsightsPageModule } from './pages/insights-page/insights-page.module';
     HomeModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true
+    },
     AuthGaurdService,
     UserResolverService,
     UserService
